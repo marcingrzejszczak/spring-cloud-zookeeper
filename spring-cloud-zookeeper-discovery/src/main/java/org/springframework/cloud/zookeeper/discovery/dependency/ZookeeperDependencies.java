@@ -67,6 +67,7 @@ public class ZookeeperDependencies {
 		private boolean required;
 
 	}
+
 	public Collection<ZookeeperDependency> getDependencyConfigurations() {
 		return dependencies.values();
 	}
@@ -75,7 +76,7 @@ public class ZookeeperDependencies {
 		return !dependencies.isEmpty();
 	}
 
-	public ZookeeperDependency getDependencyForPath(String path) {
+	public ZookeeperDependency getDependencyForPath(final String path) {
 		for (Map.Entry<String, ZookeeperDependency> zookeeperDependencyEntry : dependencies.entrySet()) {
 			if (zookeeperDependencyEntry.getValue().getPath().equals(path)) {
 				return zookeeperDependencyEntry.getValue();

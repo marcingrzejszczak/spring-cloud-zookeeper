@@ -21,33 +21,33 @@ class ZookeeperDependenciesSpec extends Specification {
 	ZookeeperDependencies zookeeperDependencies = new ZookeeperDependencies(dependencies: DEPENDENCIES)
 
 	@Unroll
-	def "should retrieve dependency [#exptectedDependency] for path [#path]"() {
+	def "should retrieve dependency [#expectedDependency] for path [#path]"() {
 		expect:
-			exptectedDependency == zookeeperDependencies.getDependencyForPath(path)
+			expectedDependency == zookeeperDependencies.getDependencyForPath(path)
 		where:
-			path   || exptectedDependency
-			null   || null
-			'path' || EXPECTED_DEPENDENCY
+			path          || expectedDependency
+			'unknownPath' || null
+			'path'        || EXPECTED_DEPENDENCY
 	}
 
 	@Unroll
-	def "should retrieve dependency [#alias] for alias [#alias]"() {
+	def "should retrieve dependency [#expectedDependency] for alias [#alias]"() {
 		expect:
-			exptectedDependency == zookeeperDependencies.getDependencyForAlias(alias)
+			expectedDependency == zookeeperDependencies.getDependencyForAlias(alias)
 		where:
-			alias   || exptectedDependency
-			null    || null
-			'alias' || EXPECTED_DEPENDENCY
+			alias          || expectedDependency
+			'unknownAlias' || null
+			'alias'        || EXPECTED_DEPENDENCY
 	}
 
 	@Unroll
-	def "should retrieve alias [#alias] for path [#path]"() {
+	def "should retrieve alias [#expectedAlias] for path [#path]"() {
 		expect:
 			expectedAlias == zookeeperDependencies.getAliasForPath(path)
 		where:
-			path   || expectedAlias
-			null   || ''
-			'path' || 'alias'
+			path          || expectedAlias
+			'unknownPath' || ''
+			'path'        || 'alias'
 	}
 
 	@Unroll
@@ -55,9 +55,9 @@ class ZookeeperDependenciesSpec extends Specification {
 		expect:
 			expectedPath == zookeeperDependencies.getPathForAlias(alias)
 		where:
-			alias   || expectedPath
-			null    || ''
-			'alias' || 'path'
+			alias          || expectedPath
+			'unknownAlias' || ''
+			'alias'        || 'path'
 	}
 
 
