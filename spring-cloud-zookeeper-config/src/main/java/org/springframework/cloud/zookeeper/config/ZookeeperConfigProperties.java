@@ -13,22 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.cloud.zookeeper.discovery.watcher.presence;
 
-import org.apache.curator.x.discovery.ServiceInstance;
+package org.springframework.cloud.zookeeper.config;
 
-import java.util.List;
+import lombok.Data;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author <a href="http://www.4financeit.com>4financeIT</a>
+ * @author Spencer Gibb
  */
-public interface PresenceChecker {
+@ConfigurationProperties("spring.cloud.zookeeper.config")
+@Data
+public class ZookeeperConfigProperties {
+	private boolean enabled = true;
 
-	/**
-	 * Checks if a given dependency is present
-	 *
-	 * @param dependencyName
-	 * @param serviceInstances - instances to check the dependency for
-	 */
-	void checkPresence(String dependencyName, List<ServiceInstance> serviceInstances);
+	private String root = "config";
+
+	@NotEmpty
+	private String defaultContext = "application";
+
+	@NotEmpty
+	private String profileSeparator = ",";
 }

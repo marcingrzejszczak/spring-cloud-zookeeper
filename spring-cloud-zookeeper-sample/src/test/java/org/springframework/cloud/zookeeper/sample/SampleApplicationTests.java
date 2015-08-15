@@ -13,22 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.cloud.zookeeper.discovery.watcher.presence;
 
-import org.apache.curator.x.discovery.ServiceInstance;
+package org.springframework.cloud.zookeeper.sample;
 
-import java.util.List;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-/**
- * @author <a href="http://www.4financeit.com>4financeIT</a>
- */
-public interface PresenceChecker {
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = SampleZookeeperApplication.class)
+public class SampleApplicationTests {
 
-	/**
-	 * Checks if a given dependency is present
-	 *
-	 * @param dependencyName
-	 * @param serviceInstances - instances to check the dependency for
-	 */
-	void checkPresence(String dependencyName, List<ServiceInstance> serviceInstances);
+    @Test
+    public void contextLoads() {}
 }
